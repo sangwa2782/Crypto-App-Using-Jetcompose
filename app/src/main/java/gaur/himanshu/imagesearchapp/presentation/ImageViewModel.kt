@@ -24,7 +24,7 @@ class ImageViewModel @Inject constructor(private val getSearchImageUseCase: GetS
     private val _query = MutableStateFlow("")
 
     init {
-        getSearchImage("sun flower")
+        getSearchImage("")
         viewModelScope.launch {
             _query.debounce(1000).collectLatest {
                 getSearchImage(query = it)

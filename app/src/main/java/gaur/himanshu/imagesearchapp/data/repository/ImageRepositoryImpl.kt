@@ -10,9 +10,7 @@ class ImageRepositoryImpl(private val apiService: ApiService) : ImageRepository 
     override suspend fun getSearchImage(query: String): List<ImageModel> {
         try {
             return apiService.getSearchImage(
-                key = "your_api_key",
-                query
-            ).hits.map { it.toDomainModel() }
+            ).map { it.toDomainModel() }
         } catch (e: java.lang.Exception) {
             throw Exception(e)
         }
